@@ -25,6 +25,9 @@ int main()
 	foo(s);
 	foo({ 1,2,3 });
 	foo({ 1,2,3, 4, 5 });
+
+	// std::initializer_list<int> : 가변길이가 가능한
+	//							배열로 생각 하세요.
 }
 
 
