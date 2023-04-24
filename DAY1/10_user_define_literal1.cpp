@@ -27,6 +27,7 @@ int main()
 				   // operator""m(3)
 
 	Meter n1 = 3_m;
+			// -3_m : operator""m(3).operator-()
 
 //	Gram  n2 = 3gram;
 }
