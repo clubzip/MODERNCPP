@@ -18,7 +18,6 @@ int main()
 	std::cout << v3.size() << std::endl; // 10
 	std::cout << v4.size() << std::endl; // 2
 
-
 	// 아래 코드에서 에러는 ?
 	std::vector<int> v5 = 10;	// error.
 								// "explicit vector(int)"
