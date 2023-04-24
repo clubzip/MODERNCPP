@@ -29,11 +29,11 @@ template<typename T> void object_set_zero(T* p)
 
 	memset(p, 0, sizeof(T)); // 안전한 코드 일까요 ?
 }
-
 class A
 {
 	int data;
 public:
+	virtual void f() {}
 };
 int main()
 {
