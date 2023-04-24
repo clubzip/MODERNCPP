@@ -27,6 +27,7 @@ int main()
 template<typename T>
 void foo(T a)
 {
+//	T s{ 0 }; // T가 0으로 초기화 될수 있다는 보장이 없다.
 	T s{}; // 
 }
 
