@@ -1,6 +1,7 @@
 #include <iostream>
 #include <vector>
 
+// C++20 부터 아래  reverse_view 같은 것이 30여개 표준에 도입됩니다.
 template<typename T> class reverse_view
 {
 	T& c;
