@@ -25,6 +25,7 @@ class Rect2
 	// C++11 부터는 아래 처럼 필드 초기화 하면 됩니다
 	Point pt1{ 0, 0 }; // ok
 	Point pt2( 0, 0 ); // error. 이 경우는 {}만 됩니다.
+						// 컴파일러가 pt2를 멤버 함수로 해석
 };
 
 int main()
