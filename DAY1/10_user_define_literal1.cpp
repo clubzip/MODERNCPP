@@ -5,10 +5,14 @@ class Meter
 public:
 	Meter(int n) : value(n) {}
 };
-
-Meter operator""m(int n)
+// 정수형 리터럴 접미사는 반드시 인자로 "unsigned long long" 으로
+// 해야 합니다.
+// 사용자가 만들때는 반드시 "_" 로 시작해야 한다.
+// "_"로 시작하지 않은 것은 C++표준에서 예약
+//Meter operator""m(unsigned long long n)
+Meter operator""_m(unsigned long long n)
 {
-	Meter me(n);
+	Meter me( static_cast<int>(n) );
 	return me;
 }
 int main()
@@ -19,8 +23,10 @@ int main()
 
 	// C++11 부터 사용자가 리터럴 접미사를 만들수 있게 되었습니다.
 	
-	Meter n1 = 3m; // 이순간 컴파일러는 약속된 함수를 찾게됩니다.
+//	Meter n1 = 3m; // 이순간 컴파일러는 약속된 함수를 찾게됩니다.
 				   // operator""m(3)
+
+	Meter n1 = 3_m;
 
 //	Gram  n2 = 3gram;
 }
