@@ -15,23 +15,28 @@ void f2(Point pt) {}
 int main()
 {
 	f1(3);	// 결국 "int n = 3" 의 의미
-			// 즉, "함수의 인자 전달은 복사 초기화" 과정입니다.
+	// 즉, "함수의 인자 전달은 복사 초기화" 과정입니다.
 
-	f1( { 3 } ); // C++11 부터 가능. "int n = {3}"
+	f1({ 3 }); // C++11 부터 가능. "int n = {3}"
 
-	f2( {1, 2} ); // Point pt = {1,2}
+	f2({ 1, 2 }); // Point pt = {1,2}
 	//------------------------------
 	std::map<std::string, std::string> m;
 
-	std::pair<std::string, std::string> p("mon", "월요일");
+	// map 은 std::pair 를 보관합니다.
+
+//	std::pair<std::string, std::string> p("mon", "월요일");
+	std::pair<std::string, std::string> p{"mon", "월요일"};
+
 	m.insert(p);
 
-	m.insert({ "tue", "화요일" }); // ok.. 
+	m.insert( { "tue", "화요일" } ); // ok.. C++11 부터
+	// ... insert(const std::pair& ) 이므로
 }
-
-
 
 Point f3() 
 { 
-	return Point(1, 2); 
+//	return Point(1, 2);  // C++98 스타일
+//	return Point{ 1, 2 };
+	return { 1,2 }; // ok.. 리턴 타입이 Point 인지 컴파일러가 알고 있으므로!!
 }
