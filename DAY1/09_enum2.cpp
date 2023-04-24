@@ -7,6 +7,9 @@ enum class DAYOFWEEK { sun = 0, mon = 1 };
 
 void foo(DAYOFWEEK w)
 {
+//	int n = w; // error
+
+	int n = static_cast<int>(w); // ok!
 }
 int main()
 {
