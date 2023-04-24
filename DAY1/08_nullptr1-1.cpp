@@ -4,8 +4,10 @@ void foo(int* p) {}
 
 template<typename T>
 void forward_foo(T arg) // int arg = 0 을 추론
-{	
-	foo(arg);	// arg가 int 타입이므로 error
+{						// std::nullptr_t arg = nullptr;
+
+	foo(arg);	// arg가 int 타입이면 error
+				// arg가 std::nullptr_t 타입이면 ok.. 
 }
 
 int main()
