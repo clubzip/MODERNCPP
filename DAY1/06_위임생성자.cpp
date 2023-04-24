@@ -6,7 +6,7 @@ public:
 	int x, y;
 public:
 	// 사용자 코드	// 컴파일러가 추가한 기반 클래스 생성자 호출 코드
-	//Point()			// : Base()
+	//Point()		// : Base()
 
 	Point() : Point(0, 0) // C++11 부터 제공되는 위임 생성자 문법
 	{
