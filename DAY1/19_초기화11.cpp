@@ -20,8 +20,12 @@ int main()
 
 
 	// 아래 코드에서 에러는 ?
-//	std::vector<int> v5 = 10;	
-//	std::vector<int> v6 = {10}; 
+	std::vector<int> v5 = 10;	// error.
+								// "explicit vector(int)"
+
+	std::vector<int> v6 = {10}; // ok
+								// "vector(std::initializer_list)"
+								// 는 explicit 생성자가 아님.
 }
 
 
