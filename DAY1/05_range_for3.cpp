@@ -21,8 +21,12 @@ int main()
 	p.y = 20;
 	p.z = 30;
 
-	for (int n : p)  // 될까요 ? 되게하려면 필요한 것은 ?
-		std::cout << n << std::endl; 
+	for (auto& n : p)  // 될까요 ? 되게하려면 필요한 것은 ?
+	{
+		std::cout << n << std::endl;
+//		n = 20;
+	}
+
 
 	// auto first = std::begin(p);
 }
