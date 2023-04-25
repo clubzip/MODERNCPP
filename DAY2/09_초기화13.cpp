@@ -19,7 +19,9 @@ struct Point
 //	Point() {}	// 사용자가 만든 생성자가 있을때
 				// => aggregate 타입 아닙니다.
 
-	Point() = default;
+	Point() = default;	// 컴파일러가 만든 생성자는 있어도 
+						// aggregate 타입	
+						// C++20 부터는 "aggregate 타입" 아닙니다.
 };
 
 int main()
