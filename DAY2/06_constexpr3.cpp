@@ -41,12 +41,12 @@ int main()
 // constexpr 함수 : 컴파일 시간 또는 실행시간에 동작
 // consteval 함수 : 반드시 컴파일 시간 에 해야 한다. C++20
 
-constexpr int Add(int a, int b)
+constexpr int Add1(int a, int b)
 {
 	return a + b;
 }
 // C++20 문법 
-consteval int Add(int a, int b)
+consteval int Add2(int a, int b)
 {
 	return a + b;
 }
