@@ -41,6 +41,13 @@ int main()
 						// 연장됩니다.
 						// "lifetime extension"
 	r3.x = 10; // error. r3는 상수참조
+
+	// 규칙 5. C++11을 만들때 임시객체도 상수성 없이
+	// 가리킬 필요가 생겼습니다.(move와 완벽한 전달을 위해)
+
+	// rvalue reference 는 상수성 없이 임시객체를 가리킬수 있다
+	Point&& r4 = Point(1, 2);
+	r4.x = 10; // ok
 }
 
 
