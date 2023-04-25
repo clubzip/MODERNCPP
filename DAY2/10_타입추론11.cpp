@@ -20,7 +20,7 @@ auto Mul2(T1 a, T2 b)
 // 아래 처럼하면 auto 추론이 아닌 decltype 으로 추론
 // 단, return 문이 2개이상이면 에러
 template<typename T1, typename T2>
-decltype(auto) Mul2(T1 a, T2 b)
+decltype(auto) Mul3(T1 a, T2 b)
 {
 	return a * b;
 }
