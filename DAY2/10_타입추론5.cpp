@@ -38,4 +38,10 @@ int main()
 	// 규칙 3. auto&& : 내일!!! 중요한 이야기가 많습니다.
 }
 
+// auto 는 pretty 같이 출력 포맷 알려주는 매크로는 없는거죠?
+// => C++ 표준에는 없습니다.
+// => boost 라이브러리의 type_name 이라는 클래스로 출력가능합니다.
 
+// auto의 type inference는 modern C++에서 적용되기 시작했나요 ?
+// template 규칙 : C++98 문법
+// auto : auto 자체의 키워드가 C++11(modernC++)에서 도입
