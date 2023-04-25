@@ -40,5 +40,8 @@ int main()
 					// int a = y[0];
 
 	decltype(y[0]) d; // int& d;
+
+	// 참조 타입 : int&, double&, char& 등
+	// 값 타입   : int, double, char
 }
 
