@@ -28,7 +28,14 @@ int main()
 
 	//---------------------------------------
 	const int c = 0;
-	c = 20;		// c는 lvalue ? rvalue 
+	c = 20;		// c는 lvalue ? rvalue ?
+				// immutable 한 lvalue 라고 합니다.
+
+	// 모든 rvalue 는 상수이다 ?? => 아닙니다.
+//	Point(1, 1).x = 10; // error !!
+						// 임시객체는 상수 아닙니다.
+						// 문법상 왼쪽에 못오는것
+//	Point(1, 1).set(10, 20); // ok
 }
 
 
