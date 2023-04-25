@@ -36,7 +36,7 @@ int main()
 	// auto 와 decltype
 	int y[3] = { 1,2,3 };
 			
-	auto a = y[0];	// 그런데, auto는 우변의 참조를 제거하고 결정
+	auto a = y[0];	// auto는 int로 결정
 					// int a = y[0];
 
 	decltype(y[0]) d; // int& d;
