@@ -23,6 +23,14 @@ int main()
 {
 	Point p1;
 	Point p2(1, 2);
+
+	// 생성자, 소멸자, 복사 생성자등의 특별 함수가
+	// "컴파일러에 의해 생성되고, 널리 알려진 대로 동작"
+	// 하는 것을 자명하다고 합니다.
+	// trivial 생성자 : 컴파일러가 만들고, 하는 일이 없는 생성자
+	//      
+	std::cout << std::is_trivially_constructible<Point>::value
+		      << std::endl;
 }
 
 
