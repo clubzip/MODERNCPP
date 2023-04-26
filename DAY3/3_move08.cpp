@@ -26,6 +26,9 @@
 
 struct Object
 {
+	// 컴파일러가 만드는 move 생성자는 모든 멤버에 대해서 std::move로 이동
+//	int age;
+//	char* p;
 	std::string name;
 
 	Object(const std::string& n) : name(n) {} // 생성자
