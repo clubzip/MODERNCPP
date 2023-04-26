@@ -25,16 +25,21 @@ template<typename F> void chronometry(F f, int&& arg)
 template<typename F, typename T> 
 void chronometry(F f, T&& arg)
 {
+	// 아래 캐스팅에 대해서 생각해 보세요
+	// chronometry 의 2번째 인자로
+	// rvalue 를 보내면 ( 받을때 lvalue인 arg를) rvalue로 캐스팅
+	// lvalue 를 보내면                        lvalue로 캐스팅
 	f(static_cast<T&&>(arg));
 }
+
 int main()
 {
 	int n = 10;
 
-	chronometry(foo, 10); // T=?   chronometry(  ? )
-						  // static_cast<?>(arg)
+	chronometry(foo, 10); // T=int   chronometry(함수포인터, int&&)
+						  // static_cast<int&&>(arg)
 
-	chronometry(goo, n);  // T=?   chronometry(  ? )
-						  // static_cast<?>(arg)
+	chronometry(goo, n);  // T=int&   chronometry(함수포인터, int&)
+						  // static_cast<int&>(arg)
 
 }
