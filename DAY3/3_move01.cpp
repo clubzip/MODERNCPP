@@ -13,10 +13,18 @@ int main()
 	std::string s1 = "to be or not to be";
 	std::string s2 = "to be or not to be";
 
+	std::cout << (void*)s2.data() << std::endl;
+
 	std::string s3 = s1;	// 깊은 복사(문자열 자체를 메모리 복사)
 	std::string s4 = std::move(s2);
 						// s2가 사용하던 문자열 자원을 s4가 사용
 						// s2는 더이상 자원 없음.
+
+	std::cout << (void*)s2.data() << std::endl;
+						// 구현에 따라 다를수 있음
+						// 개념적으로는 자원 없음이지만
+						// "" 빈 문자열을 할당했을수 있음.
+	std::cout << (void*)s4.data() << std::endl;
 
 	std::cout << s1 << std::endl; // "to be or not to be"
 	std::cout << s2 << std::endl; // ""
