@@ -9,6 +9,9 @@ void hoo(int&&) {}
 // 2. 인자를 다른 곳에 전달할때 "std::forward<T>(arg)"로 묶어서
 //    전달하세요
 
+// T&& 기술이 대부분 "완벽한 전달" 할때 사용되기 때문에
+// "forwarding reference" 라고 이름을 정했습니다.
+
 template<typename F, typename T>
 void chronometry(F f, T&& arg)
 {
