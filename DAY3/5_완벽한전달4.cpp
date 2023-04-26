@@ -27,9 +27,11 @@ void chronometry(F f, T&& arg)
 {
 	// 아래 캐스팅에 대해서 생각해 보세요
 	// chronometry 의 2번째 인자로
-	// rvalue 를 보내면 ( 받을때 lvalue인 arg를) rvalue로 캐스팅
-	// lvalue 를 보내면                        lvalue로 캐스팅
-	f(static_cast<T&&>(arg));
+	// rvalue 를 보내면 (받을때 사용한 lvalue인 arg를) rvalue로 캐스팅
+	// lvalue 를 보내면                             lvalue로 캐스팅
+//	f(static_cast<T&&>(arg));
+
+	f( std::forward<T>(arg) ); // 이 함수가 위와 같은 캐스팅을 합니다.
 }
 
 int main()
