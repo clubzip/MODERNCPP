@@ -8,7 +8,7 @@ int main()
 	//               캐스팅 결과로 해당 타입의 move 생성자 호출
 	// int 타입은 복사생성자, move 생성자의 개념이 없습니다.
 	int n1 = 10;
-	int n2 = std::move(n1); // int n2 = n1 와 결국 동일
+	int n2 = std::move(n1); // int n2 = static_cast<int&&>(n1) 와 결국 동일
 
 	// 2. 포인터도 동일합니다.
 	int* p1 = new int;
@@ -22,4 +22,6 @@ int main()
 	//    효과를 볼수 있습니다.(move 생성자를 제공한 타입)
 	std::string s1 = "to be or not to be";
 	std::string s2 = std::move(s1); // string 클래스의 move생성자호출
+	
+	// STL 의 대부분의 클래스 안에는 move 생성자가 구현되어 있습니다.
 }
