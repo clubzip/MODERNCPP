@@ -27,10 +27,16 @@ int main()
 	//			   인자로 lvalue 를 받겠다는 것
 	// foo(int&&): 인자로 rvalue 를 받겠다는 것
 	int&& r2 = 10;
+
 	foo(r2); // foo(int&) 호출
+	
 	foo(static_cast<int&&>(r2)); // foo(int&&) 호출
 			// r2의 타입이 int&& 인데 같은 타입인 int&&로 
 			// 캐스팅하는것 아닌가요 ????
+
+		// static_cast<타입&&> : 타입 캐스팅이 아닌
+		//						value 속성을 변경하는 캐스팅
+		//						lvalue => rvalue로 캐스팅
 }
 
 
