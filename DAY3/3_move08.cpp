@@ -25,6 +25,11 @@ struct Object
 	{
 		std::cout << "사용자가 만든 복사 생성자" << std::endl;
 	}
+	// 위에 복사 생성자를 만들었지만, 나머지 함수는 
+	// 컴파일러의 디폴트 버전을 사용하려면 아래 처럼 요청합니다.
+	Object(Object&&) = default;
+	Object& operator=(const Object&) = default;
+	Object& operator=(Object&&) = default;
 };
 
 int main()
