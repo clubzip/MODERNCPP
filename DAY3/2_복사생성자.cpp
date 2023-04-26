@@ -23,7 +23,9 @@ public:
 	//Point(Point& pt) {} // "Point& pt = p2" 
 
 	// 방법 3. call by const lvalue reference
-	Point(const Point& pt) : x(pt.x), y(pt.y) {}
+	// Point(const Point& pt) : x(pt.x), y(pt.y) {}
+
+	// 결국 사용자가 만들지 않으면 컴파일러가 위 코드를 제공!!
 };
 
 Point foo()
