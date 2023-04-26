@@ -10,7 +10,9 @@ f2(n); // error
 f2(0); // ok
 
 // 함수인자로
+// 
 // int&  : int 타입의 lvalue 만 받겠다는 것
+// 
 // int&& : int 타입의 rvalue 만 받겠다는 것
 
 // T&    : 모든 타입의 lvalue 만 받을수 있다.
@@ -20,8 +22,21 @@ f2(0); // ok
 // 핵심 1. "받을수 있다" 라는 말은 "받을수 있는 함수를 생성한다"는것
 // 핵심 2. 생성된 함수는 모두 call by value 가 아닌 reference !!
 
-// lvalue 전달 f4(n)	: T=?		T&&=?		최종 함수 : f4(? )
-// rvalue 전달 f4(3)	: T=?		T&&=?		최종 함수 : f4(? )
+// lvalue 전달 f4(n)	: T=int&	T&&=int& &&	 최종 함수 : f4(int& )
+// rvalue 전달 f4(3)	: T=int		T&&=int&&	 최종 함수 : f4(int&& )
+
+// "universal reference" 라고 부르자고 "effective c++저자가 제안"
+
+// 하지만, C++ 표준위원회는 이후에
+// "forwarding reference" 라는 이름을 사용하기로 결정
+
+// T&& : forwarding reference
+
+
+
+
+
+
 
 
 template<typename T> void f3(T& a)
