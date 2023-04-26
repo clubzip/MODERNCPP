@@ -13,9 +13,15 @@ f2(0); // ok
 // int&  : int 타입의 lvalue 만 받겠다는 것
 // int&& : int 타입의 rvalue 만 받겠다는 것
 
-// T&    : 임의 타입의 lvalue 만 받을수 있다.
+// T&    : 모든 타입의 lvalue 만 받을수 있다.
 
-// T&&   : 
+// T&&   : 모든 타입의 lvalue 와 rvalue 를 모두 받을수 있다.
+// 
+// 핵심 1. "받을수 있다" 라는 말은 "받을수 있는 함수를 생성한다"는것
+// 핵심 2. 생성된 함수는 모두 call by value 가 아닌 reference !!
+
+// lvalue 전달 f4(n)	: T=?		T&&=?		최종 함수 : f4(? )
+// rvalue 전달 f4(3)	: T=?		T&&=?		최종 함수 : f4(? )
 
 
 template<typename T> void f3(T& a)
@@ -52,12 +58,19 @@ int main()
 	int n = 0;
 	
 	// 1. 타입을 명시적으로 전달하는 경우. ? 채워 보세요
-	f4<int>(? );   // T=?		T&&=?		f4(? a)
-	f4<int&>(? );  // T=?		T&&=?		f4(? a)
-	f4<int&&>(? ); // T=?		T&&=?		f4(? a)
+	f4<int>(3);    // T=int		T&&=int&&		f4(int&& a)
+	f4<int&>(n);   // T=int&	T&&=int& &&		f4(int& a)
+	f4<int&&>(3);  // T=int&&	T&&=int&& &&	f4(int&& a)
 
 	// 2. 타입인자를 전달하지 않으면 함수인자를 보고 타입을 결정
 	// => 컴파일러가 T를 어떻게 결정했을지 예측해 보세요
-	f4(n); // T=?		T&&=?			생성된함수 : f4(? a)
-	f4(3); // T=?		T&&=?			생성된함수 : f4(? a)
+
+	f4(n);	// 1. n은 int 이므로 T=int로 결정하면 f4(int&&)함수 생성
+			//	  => f4(n) 은 에러!!
+			// 
+			// 2. T=int& 로 결정하면 f4(int&) 함수 생성되므로 
+			//    => f4(n) 은 에러 아님.
+			// T=int&		T&&=int& &&	   생성된함수 : f4(int& a)
+
+	f4(3); // T=int		T&&=int&&		생성된함수 : f4(int&& a)
 }
