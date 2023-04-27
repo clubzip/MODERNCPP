@@ -38,6 +38,19 @@ int main()
 
 	Less    f1; f1(1, 2); Sort(x, 10, f1);
 	Greater f2; f2(1, 2); Sort(x, 10, f2);
+
+	/*
+	if (사용자 입력 == 1)
+	{
+		Less f1;
+		Sort(x, 10, f1);
+	}
+	else
+	{
+		Greater f2;
+		Sort(x, 10, f2);
+	}
+	*/
 }
 
 
