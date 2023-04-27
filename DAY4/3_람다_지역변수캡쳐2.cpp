@@ -9,6 +9,12 @@ int main()
 	// mutable 람다 표현식 : operator() 연산자를 const 함수로 하지말라는것
 	auto f1 = [v1, v2](int a) mutable { v1 = 100; return a + v1 + v2; };
 
+	f1(0); // 이순간 v1 = 100 을 실행하지만, 복사본 v1이 변경되는 것입니다.
+
+	std::cout << v1 << std::endl; // 10   
+
+
+
 
 	// 위 f1 의  정확한 원리를 생각해 봅시다. => 꼭 이해해 두세요
 	class CompilerGeneratedName
