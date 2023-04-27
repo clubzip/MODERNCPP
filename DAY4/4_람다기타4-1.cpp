@@ -14,7 +14,6 @@ public:
 
 	operator PF() { return &CompilerGeneratedName::helper; }
 };
-
 int main()
 {
 	int v1 = 0;
