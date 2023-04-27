@@ -22,6 +22,10 @@ int main()
 	std::sort(v.begin(), v.end(), f);
 	std::sort(v.begin(), v.end(), f);
 
+	// 이런 경우는 람다 보다도 less{} 를 사용하는것도 좋습니다.
+	std::sort(v.begin(), v.end(), std::less<int>{});
+	std::sort(v.begin(), v.end(), std::less<int>{});
+	std::sort(v.begin(), v.end(), std::less<int>{});
 }
 
 
