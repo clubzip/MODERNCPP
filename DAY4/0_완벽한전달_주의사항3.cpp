@@ -28,5 +28,15 @@ int main()
 
 	t.goo(n); // ok
 	t.goo(10);// ok
+
+	// auto&& 는 rvalue reference 일까요 ? 
+	// forwarding reference 일까요 ?  => 정답
+	// T&& r1 = 10
+	auto&& r1 = 10; // ok  int&& r1 = 10
+					// auto : int,  auto&& : int&&
+	auto&& r2 = n;  // ok  int&  r2 = n
+					// auto : int&, auto&& : int& && => int&
+
+//	decltype(n)&& 
 }
 
