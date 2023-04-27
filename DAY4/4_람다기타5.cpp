@@ -70,4 +70,14 @@ int main()
 	find_if( std::plus<int>() ); // C++ 표준 함수 객체
 }
 
+// 결론 : 람다표현식을 함수 인자로 받으려면
+// => 아래 중에서 한개 선택하세요.
+// 1. foo(T f) 
+// 2. foo(T&& f)
+// 3. foo( std::function<int(int, int)> f)
 
+// 뭐가 좋나요 ?? 상황에 따라 다릅니다.
+// find_if 라면 전달되는 함수객체의 크기가 크지 않고
+// 인라인 치환성이 중요 하므로 - T f !!!
+
+// cppreference.com  std::find_if 찾아보세요  3번째 인자 확인해보세요
