@@ -18,19 +18,16 @@ int main()
 
 	// 장점 : 비교 정책을 여러번 교체 해도 sort() 함수는 한개만 생성된다.
 	//       코드 메모리 증가 안함
-
 	// 단점 : 비교 정책을 담은 함수가 인라인 치환 될수 없다. 느리다.
 
 	std::sort(x, x+10, cmp1);// sort(int*, int*, bool(*)(int, int)) 모양의 sort 생성됨
 	std::sort(x, x+10, cmp2);// sort(int*, int*, bool(*)(int, int)) 모양의 sort 생성됨
-	
 
 	// 2. 비교정책으로 함수객체 사용시
 
 	// 장점 : 비교 정책이 인라인 치환 될수 있다. 빠르다.
 	// 단점 : 비교 정책을 교체한 횟수 만큼의 sort() 기계어 코드 생성
 	//		  코드 메모리 증가
-
 	Less    f1;
 	Greater f2;
 	std::sort(x, x + 10, f1); // sort(int*, int*, Less)모양의 함수 생성
