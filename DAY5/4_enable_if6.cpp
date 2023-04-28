@@ -21,6 +21,12 @@ void printv(const T& v)
 */
 
 // C++20 부터는 실제로는 아래 처럼 합니다
+// => C++20 부터는 함수 인자로 "auto" 라고만 적어도 
+//    template 입니다.
+
+// void foo(auto a) : 템플릿
+// void foo(pointer auto a) : pointer 조건을 만족하는 것만가능한 템플릿
+
 template<typename T>
 concept pointer = std::is_pointer_v<T>;
 
