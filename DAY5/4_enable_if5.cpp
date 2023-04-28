@@ -4,18 +4,14 @@
 // 리턴 타입 자리에 "std::enable_if_t<조건, 반환타입>" 표기해보세요
 
 template<typename T>
-
-void 
-
+std::enable_if_t< std::is_pointer_v<T> >
 printv(const T& v)
 {
 	std::cout << v << " : " << *v << std::endl;
 }
 
 template<typename T>
-
-void 
-
+std::enable_if_t< !std::is_pointer_v<T> >
 printv(const T& v)
 {
 	std::cout << v << std::endl;
