@@ -27,12 +27,12 @@ int main()
 
 	std::cout << typeid(n2).name() << std::endl; // int
 }
-
-
-
-
-
-
 template<typename T> void foo(T a)
 {
+	// 주의!!
+	// T에 대해서 remove_pointer 를 사용할때는 반드시 typename 필요합니다.
+
+//	remove_pointer<T>::type n2; // error. typename 필요
+
+	typename remove_pointer<T>::type n2; // 
 }
