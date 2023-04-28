@@ -3,7 +3,7 @@
 #include <vector>
 #include <array>
 
-// í•µì‹¬ : Setter ë§Œë“¤ê¸° #2
+// ÇÙ½É : Setter ¸¸µé±â #2
 
 class People
 {
@@ -11,11 +11,40 @@ private:
 	std::string name;
 	std::string address;
 public:
+	/*
+	// ÀÎÀÚ°¡ 2°³ ÀÌ»óÀÎ setter
 	void set(const std::string& n, const std::string& a)
 	{
 		name = n;
 		address = a;
 	}
+	void set(std::string&& n, std::string&& a)
+	{
+		name = std::move(n);
+		address = std::move(a);
+	}
+	void set(const std::string& n, std::string&& a)
+	{
+		name = n;
+		address = std::move(a);
+	}
+	void set(std::string&& n, const std::string& a)
+	{
+		name = std::move(n);
+		address = a;
+	}
+	*/
+	// °á·Ð : ÀÎÀÚ°¡ N°³ÀÎ setter ¸¦ ¿Ïº®ÇÑ Àü´Þ ÇÏ´Â °ÍÀ» Á÷Á¢ ¸¸µé¸é
+	//       N^2 °³ÀÇ setter¸¦ ¸¸µé¾î¾ß ÇÕ´Ï´Ù.
+	// => ³Ê¹« ¸¹½À´Ï´Ù. T&& ·Î ÇÏ¼¼¿ä.
+
+	template<typename T1, typename T2>
+	void set(T1&& n, T2&& a)
+	{
+		name = std::forward<T1>(n);
+		address = std::forward<T2>(a);
+	}
+
 };
 
 int main()
@@ -24,16 +53,10 @@ int main()
 	std::string addr = "seoul";
 
 	People p;
-	p.set(name,			   addr);
-//	p.set(std::move(name), addr);
-//	p.set(name,			   std::move(addr));
-//	p.set(std::move(name), std::move(addr));
+	p.set(name, addr);
+	//	p.set(std::move(name), addr);
+	//	p.set(name,			   std::move(addr));
+	//	p.set(std::move(name), std::move(addr));
 }
-
-
-
-
-
-
 
 
