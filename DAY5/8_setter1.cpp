@@ -1,4 +1,6 @@
-// 105 page.. ìƒìˆ˜ ê°ì²´ì™€ move
+// 8_setter1.cpp
+// git ¿¡¼­ º¹»çÇØ ¿À¼¼¿ä
+
 #include <iostream>
 #include <vector>
 
@@ -6,17 +8,17 @@ class Object
 {
 public:
 	Object() {}
-	Object(const Object&) { std::cout << "copy" << std::endl; }
-	Object(Object&&) noexcept  {std::cout << "move" << std::endl;	}
+	Object(const Object&)     { std::cout << "copy" << std::endl; }
+	Object(Object&&) noexcept { std::cout << "move" << std::endl; }
 };
 int main()
 {
 	Object o1;
 	Object o2 = std::move(o1);	// ??
 
+	// ÇÙ½É. »ó¼ö°´Ã¼´Â move µÉ¼ö ¾ø½À´Ï´Ù.
 	const Object o3;
 	Object o4 = std::move(o3); // ??
+			// static_cast<o3Å¸ÀÔ&&>(o3)
+			// static_cast<o3Å¸ÀÔ&&>(o3)
 }
-
-
-
