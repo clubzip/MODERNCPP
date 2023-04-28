@@ -12,13 +12,27 @@
 // 핵심 1. primary template 을 만들고 false 반환(value=false라는의미)
 template<typename T> struct is_pointer
 {
-	enum { value = false };
+	// 왜 enum 을 사용하나요 ?
+	// bool value = false;  // 이렇게 하면
+						 // 1. 컴파일 시간 상수가 아닌 "변수"!
+						 // 2. C++11 이전에는 여기서 초기화안됨
+
+	// 매크로는 안되나요 ?
+	// 매크로 : 컴파일 전에 전처리기가 이미 처리
+	//         전처리된후에는 컴파일 러는 알지 못하는 기호가 됩니다.
+
+//	enum { value = false }; // enum hack 이라고 합니다.
+
+	// 그런데, 이 C++11 부터는 enum 대신 아래처럼 하면 됩니다.
+	static constexpr bool value = false;
 };
 
 // 핵심 2. 조건을 만족하는 부분 특수화 버전을 만들고 true 반환(value=true)
 template<typename T> struct is_pointer<T*>
 {
-	enum { value = true };
+//	enum { value = true };
+
+	static constexpr bool value = true;
 };
 
 template<typename T> void foo(const T& a)
@@ -33,10 +47,17 @@ template<typename T> void foo(const T& a)
 
 
 
-
+/*
 int main()
 {
 	int n = 0;
 	foo(n);
 	foo(&n);
+}
+
+enum {mon = 1, tue = 2};
+*/
+int main()
+{
+	int n = mon; // => 컴파일 후 "int n =1"
 }
