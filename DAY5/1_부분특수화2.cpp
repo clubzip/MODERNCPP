@@ -1,5 +1,11 @@
 #include <iostream>
 
+// 최초의 specialization 문법을 만든 의도는
+// => 아래 vector 처럼..
+// => 특정 타입에 대한 최적화된 틀(템플릿)을 제공하자는 의도 였습니다.
+
+// => 그런데, modern c++ 이후에 이문법으로 다양한 기술을 만들어서 사용합니다.
+
 // STL vector 의 구현원리를 생각해 봅시다.
 template<typename T>
 class vector
