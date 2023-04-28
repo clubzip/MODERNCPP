@@ -28,9 +28,11 @@ public:
 	void set(T&& n)
 	{
 		// 다음중 맞는 것은 ?
-		name = n;					// 1
-		name = std::move(n);		// 2
-		name = std::forward<T>(n);	// 3
+		name = n;					// 1. 항상 복사
+		name = std::move(n);		// 2. 항상 move
+		name = std::forward<T>(n);	// 3. 사용자가 set의인자를
+						// lvalue로 보내면 복사
+						// rvalue로 보내면 move
 	}
 
 };
