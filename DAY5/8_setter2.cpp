@@ -2,19 +2,38 @@
 #include <string>
 #include <vector>
 
-// í•µì‹¬ : Setter ë§Œë“¤ê¸° #1
+// ÇÙ½É : Setter ¸¸µé±â #1
 
 class People
 {
 private:
 	std::string name;
-	int age;
 
 public:
-	// C++98 ì‹œì ˆì˜ ì½”ë“œ
-	void set(const std::string& n) { name = n; }
-};
+	// C++98 ½ÃÀıÀÇ ÄÚµå
+	// C++98 ½ÃÀı : 100Á¡
+	// C++11 ÀÌÈÄ : best ´Â ¾Æ´Õ´Ï´Ù. move Áö¿ø¾ÈµÇ´Â setter
+//	void set(const std::string& n) { name = n; } // Ç×»óº¹»ç
+//	void set(const std::string& n) { name = std::move(n); }
+									// nÀº»ó¼ö °´Ã¼ÀÌ¹Ç·Î Ç×»óº¹»ç
 
+	// setter ¸¸µé¶§ move Áö¿ø ÇÏ·Á¸é 2°³ ¸¸µé¾î¾ß ÇÕ´Ï´Ù.
+	// C++11 ÀÌÈÄ¿¡ ÃÖ¼±ÀÇ ÄÚµåÀÔ´Ï´Ù.
+	// ÇØ°áÃ¥ 1. 2°³ ¸¸µå¼¼¿ä
+//	void set(const std::string& n) { name = n; }
+//	void set(std::string&& n) { name = std::move(n); }
+
+	// ÇØ°áÃ¥ 2. T&& »ç¿ëÇÏ¸é À§ 2°³¸¦ ÀÚµ¿»ı¼ºÇÕ´Ï´Ù.
+	template<typename T>
+	void set(T&& n)
+	{
+		// ´ÙÀ½Áß ¸Â´Â °ÍÀº ?
+		name = n;					// 1
+		name = std::move(n);		// 2
+		name = std::forward<T>(n);	// 3
+	}
+
+};
 
 int main()
 {
@@ -24,17 +43,11 @@ int main()
 	People p;
 
 	p.set(s1);
-	p.set(std::move(s2));	
+	p.set(std::move(s2));
 
 	std::cout << s1 << std::endl; // "kim"
 	std::cout << s2 << std::endl; // ""
 
 }
-
-
-
-
-
-
 
 
