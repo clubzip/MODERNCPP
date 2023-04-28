@@ -8,18 +8,27 @@ template<typename ... Types> struct tuple
 template<typename T, typename ... Types>
 struct tuple<T, Types...> : public tuple<Types...>
 {
+	using base = tuple<Types...>;
+
 	T value;
 
 	tuple() = default;
-	tuple(const T& n) : value(n) {}
+	tuple(const T& n, const Types& ... args ) 
+		: value(n), base( args...)  {}
 
-	static constexpr int N = 1;
+//	static constexpr int N = 기반클래스::N + 1;
+	static constexpr int N = base::N + 1;
 };
+
 
 int main()
 {
 	tuple<> t0;						  // primary 버전 사용
-	tuple<short> t1;				  // short 보관
-	tuple<double, short> t2;		  // double 보관
-	tuple<int, double, short> t3(10); // int 보관
+	tuple<             short> t1;	  // short 보관
+	tuple<     double, short> t2;	  // double 보관
+//	tuple<int, double, short> t3(10); // int 보관
+
+	tuple<int, double, short> t3(10, 3.4, 2);
 }
+// 컴파일 시간에 재귀를 사용해서 기반 클래스를 계속 만들면서 상속받는 코드!
+
