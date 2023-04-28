@@ -22,6 +22,7 @@ void foo(Types ... args)
 
 	// 아래 코드 해석해 보세요
 	(v.push_back(args), ...);
+	// (v.push_back(1), (v.push_back(2), (v.push_back(3))
 }
 
 // 가변인자 템플릿    : C++11
