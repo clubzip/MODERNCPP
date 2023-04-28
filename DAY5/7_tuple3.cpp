@@ -22,5 +22,5 @@ int main()
 	tuple<> t0;
 	tuple<short> t1;
 	tuple<double, short> t2;
-	tuple<int, double, short> t3;
+	tuple<int, double, short> t3(10); // t3는 한개(int, 10)만 보관
 }
