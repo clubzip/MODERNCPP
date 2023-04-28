@@ -1,6 +1,10 @@
 #include <iostream>
 #include <type_traits>
 
+// static_assert : 조건을 만족하지 않으면 컴파일 중지!!
+// 원하는 것       : 조건을 만족하지 않으면 템플릿 사용하지 않겠다..
+//				    동일 이름의 다른 함수가 있으면 사용가능
+
 // 정수의 최대 공약수 구하는 함수
 template<typename T> T gcd(T a, T b)
 {
