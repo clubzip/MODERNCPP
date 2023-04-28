@@ -14,12 +14,14 @@
 
 template<typename T> 
 
-typename std::enable_if< std::is_integral_v<T>, T>::type
+//typename std::enable_if< std::is_integral_v<T>, T>::type
+
+std::enable_if_t< std::is_integral_v<T>, T>
 
 gcd(T a, T b)
 {
 	std::cout << "T" << std::endl;
-	return 0; .
+	return 0; 
 }
 
 
